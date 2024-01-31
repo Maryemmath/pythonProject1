@@ -19,16 +19,17 @@ def play(board, current_player):
     prev_player = current_player
     while True:
         print_board(board)
-        if check_winner(board, prev_player):
-            print(current_player)
-            break
-        elif board_full(board):
-            print('Tie')
-            break
+
         decision = input("Make your move, enter (x,y) coordinates separated by space ")
         coordinates = decision.split()
         x = int(coordinates[0])
         y = int(coordinates[1])
+        if check_winner(board, current_player):
+            print()
+            break
+        elif board_full(board):
+            print('Tie')
+            break
         if current_player == "X":
             if board[x][y] == " ":
                 board[x][y] = "X"
